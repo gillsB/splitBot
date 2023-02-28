@@ -1,4 +1,6 @@
-requirements NPM, Node.js, Nodemon(recommended)
+requirements NPM, Node.js,
+
+also nodemon(recommended)
 
 Install node_modules (required to run) through 'npm install'
 
