@@ -9,5 +9,5 @@ TOKEN=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 where the XXXXX is your discord bot token
 
 
-then run by entering nodemon in the terminal
+then run by entering 'nodemon' in the terminal
 
