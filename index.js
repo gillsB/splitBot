@@ -65,7 +65,7 @@ client.on("messageCreate", (message) => {
       even_split = Math.floor(value - value / people);
       com_split = Math.floor(value - value / (people - 1));
 
-      if (even_split == -1 || com_split == -1) {
+      if (even_split == -1 || com_split == -1 || !Number.isInteger(even_split)) {
         message.reply("The correct syntax is:\n .split `X` \n where `X` is the value to split among the 4 people ");
       } else {
         message.reply("Even split bid = `" + even_split + "`");
