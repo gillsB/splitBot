@@ -36,40 +36,37 @@ client.on("messageCreate", (message) => {
     if (message.content.toLowerCase() === splitCom) {
       message.reply("The correct syntax is:\n .split `X` \n where `X` is the value to split among the 8 people ");
     } else if (message.content.startsWith(splitCom + " ")) {
-      let parameters = message.content.split(" ");
-      splitCommand(parameters);
+      splitCommand();
     } else if (message.content.startsWith(split4Com)) {
-      let parameters = message.content.split(" ");
-      split4Command(parameters);
+      split4Command();
     } else if (message.content.startsWith(split2Com)) {
-      let parameters = message.content.split(" ");
-      splitExtra(2, parameters);
+      splitExtra(2);
     } else if (message.content.startsWith(split3Com)) {
-      let parameters = message.content.split(" ");
-      splitExtra(3, parameters);
+      splitExtra(3);
     } else if (message.content.startsWith(split5Com)) {
-      let parameters = message.content.split(" ");
-      splitExtra(5, parameters);
+      splitExtra(5);
     } else if (message.content.startsWith(split6Com)) {
-      let parameters = message.content.split(" ");
-      splitExtra(6, parameters);
+      splitExtra(6);
     } else if (message.content.startsWith(split7Com)) {
-      let parameters = message.content.split(" ");
-      splitExtra(7, parameters);
+      splitExtra(7);
     }
 
-    function splitCommand(parameters) {
-      for (let i = 0; i < parameters.length; i++) {
-        console.log("Parameter " + i + " equals " + parameters[i]);
-      }
+    function splitCommand() {
+      let parameters = message.content.split(" ");
+      console.log("\nUser: " + message.author.username + "#" + message.author.discriminator + " asked: |" + message.content + "| in channel: " + message.channel.name);
+      let response = "";
       if (parameters.length == 1 || parameters.length >= 4) {
-        message.reply("The correct syntax is:\n .split `X` \n where `X` is the value to split among the 8 people ");
+        response = "The correct syntax is:\n .split `X` \n where `X` is the value to split among the 8 people ";
+        console.log("splitCommand replies:");
+        console.log(response);
+        message.reply(response);
       } else if (parameters.length == 2) {
         let people = 8;
         let value = parameters[1];
         let even_split = -1;
         let com_split = -1;
         let tax = 0;
+        let response = "";
         tax = value * 0.05;
         value = value - tax;
 
@@ -86,19 +83,28 @@ client.on("messageCreate", (message) => {
           com_split = Math.floor(value - value / (people - 2));
         }
         if (even_split == -1 || com_split == -1 || !Number.isInteger(even_split)) {
-          message.reply("The correct syntax is:\n .split `X` \n where `X` is the value to split among the 8 people ");
+          response = "The correct syntax is:\n .split `X` \n where `X` is the value to split among the 8 people ";
+          console.log("splitCommand replies:");
+          console.log(response);
+          message.reply(response);
         } else {
-          message.reply("Assumed default of 8 people \nEven split bid = `" + even_split + "` \nSmall commission split bid = `" + com_split + "`\nCommission profit = " + (even_split - com_split));
+          response = "Assumed default of 8 people \nEven split bid = `" + even_split + "` \nSmall commission split bid = `" + com_split + "`\nCommission profit = " + (even_split - com_split);
+          console.log("splitCommand replies:");
+          console.log(response);
+          message.reply(response);
         }
       }
     }
 
-    function split4Command(parameters) {
-      for (let i = 0; i < parameters.length; i++) {
-        console.log("Parameter " + i + " equals " + parameters[i]);
-      }
+    function split4Command() {
+      let parameters = message.content.split(" ");
+      console.log("\nUser: " + message.author.username + "#" + message.author.discriminator + " asked: |" + message.content + "| in channel: " + message.channel.name);
+      let response = "";
       if (parameters.length == 1 || parameters.length >= 3) {
-        message.reply("The correct syntax is:\n .split4 `X` \n where `X` is the value to split among the 4 people ");
+        response = "The correct syntax is:\n .split4 `X` \n where `X` is the value to split among the 4 people ";
+        console.log("splitCommand replies:");
+        console.log(response);
+        message.reply(response);
       } else if (parameters.length == 2) {
         let people = 4;
         let value = parameters[1];
@@ -106,27 +112,33 @@ client.on("messageCreate", (message) => {
         let com_split = -1;
         let tax = 0;
         tax = value * 0.05;
-        console.log(tax);
         value = value - tax;
-        console.log(value);
 
         even_split = Math.floor(value - value / people);
         com_split = Math.floor(value - value / (people - 1));
 
         if (even_split == -1 || com_split == -1 || !Number.isInteger(even_split)) {
-          message.reply("The correct syntax is:\n .split4 `X` \n where `X` is the value to split among the 4 people ");
+          response = "The correct syntax is:\n .split4 `X` \n where `X` is the value to split among the 4 people ";
+          console.log("splitCommand replies:");
+          console.log(response);
+          message.reply(response);
         } else {
-          message.reply("Even split bid = `" + even_split + "`");
+          response = "Even split bid = `" + even_split + "`";
+          console.log("splitCommand replies:");
+          console.log(response);
+          message.reply(response);
         }
       }
     }
 
-    function splitExtra(amount, parameters) {
-      for (let i = 0; i < parameters.length; i++) {
-        console.log("Parameter " + i + " equals " + parameters[i]);
-      }
+    function splitExtra(amount) {
+      let parameters = message.content.split(" ");
+      console.log("\nUser: " + message.author.username + "#" + message.author.discriminator + " asked: |" + message.content + "| in channel: " + message.channel.name);
       if (parameters.length == 1 || parameters.length >= 3) {
-        message.reply("The correct syntax is:\n .split" + amount + " `X` \n where `X` is the value to split among the " + amount + " people ");
+        response = "The correct syntax is:\n .split" + amount + " `X` \n where `X` is the value to split among the " + amount + " people ";
+        console.log("splitCommand replies:");
+        console.log(response);
+        message.reply(response);
       } else if (parameters.length == 2) {
         let people = amount;
         let value = parameters[1];
@@ -139,30 +151,33 @@ client.on("messageCreate", (message) => {
         split_per_person = Math.floor(value / people);
 
         tax = value * 0.05;
-        console.log(tax);
         value_taxed = value - tax;
-        console.log(value);
 
         even_split = Math.floor(value_taxed - value_taxed / people);
         split_per_person_taxed = Math.floor(value_taxed / people);
 
         if (even_split == -1 || !Number.isInteger(even_split)) {
-          message.reply("The correct syntax is:\n .split" + amount + " `X` \n where `X` is the value to split among the " + amount + " people ");
+          response = "The correct syntax is:\n .split" + amount + " `X` \n where `X` is the value to split among the " + amount + " people ";
+          console.log("splitCommand replies:");
+          console.log(response);
+          message.reply(response);
         } else {
-          message.reply(
+          response =
             "Even split bid = `" +
-              even_split +
-              "`\nNon Taxed split per person = `" +
-              split_per_person +
-              "`" +
-              "\nAfter tax raw gold = `" +
-              value_taxed +
-              "`" +
-              "\nGold per person after tax = " +
-              "`" +
-              split_per_person_taxed +
-              "`"
-          );
+            even_split +
+            "`\nNon Taxed split per person = `" +
+            split_per_person +
+            "`" +
+            "\nAfter tax raw gold = `" +
+            value_taxed +
+            "`" +
+            "\nGold per person after tax = " +
+            "`" +
+            split_per_person_taxed +
+            "`";
+          console.log("splitCommand replies:");
+          console.log(response);
+          message.reply(response);
         }
       }
     }
