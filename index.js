@@ -38,7 +38,7 @@ client.on("messageCreate", (message) => {
     } else if (message.content.startsWith(splitCom + " ")) {
       splitCommand();
     } else if (message.content.startsWith(split4Com)) {
-      split4Command();
+      splitExtra(4);
     } else if (message.content.startsWith(split2Com)) {
       splitExtra(2);
     } else if (message.content.startsWith(split3Com)) {
@@ -49,6 +49,10 @@ client.on("messageCreate", (message) => {
       splitExtra(6);
     } else if (message.content.startsWith(split7Com)) {
       splitExtra(7);
+    } else if (message.content.startsWith(".") && message.content.includes("?")) {
+      splitHelp();
+    } else if (message.content.startsWith(".") && message.content.includes("help")) {
+      splitHelp();
     }
 
     function splitCommand() {
@@ -89,41 +93,6 @@ client.on("messageCreate", (message) => {
           message.reply(response);
         } else {
           response = "Assumed default of 8 people \nEven split bid = `" + even_split + "` \nSmall commission split bid = `" + com_split + "`\nCommission profit = " + (even_split - com_split);
-          console.log("splitCommand replies:");
-          console.log(response);
-          message.reply(response);
-        }
-      }
-    }
-
-    function split4Command() {
-      let parameters = message.content.split(" ");
-      console.log("\nUser: " + message.author.username + "#" + message.author.discriminator + " asked: |" + message.content + "| in channel: " + message.channel.name);
-      let response = "";
-      if (parameters.length == 1 || parameters.length >= 3) {
-        response = "The correct syntax is:\n .split4 `X` \n where `X` is the value to split among the 4 people ";
-        console.log("splitCommand replies:");
-        console.log(response);
-        message.reply(response);
-      } else if (parameters.length == 2) {
-        let people = 4;
-        let value = parameters[1];
-        let even_split = -1;
-        let com_split = -1;
-        let tax = 0;
-        tax = value * 0.05;
-        value = value - tax;
-
-        even_split = Math.floor(value - value / people);
-        com_split = Math.floor(value - value / (people - 1));
-
-        if (even_split == -1 || com_split == -1 || !Number.isInteger(even_split)) {
-          response = "The correct syntax is:\n .split4 `X` \n where `X` is the value to split among the 4 people ";
-          console.log("splitCommand replies:");
-          console.log(response);
-          message.reply(response);
-        } else {
-          response = "Even split bid = `" + even_split + "`";
           console.log("splitCommand replies:");
           console.log(response);
           message.reply(response);
@@ -180,6 +149,15 @@ client.on("messageCreate", (message) => {
           message.reply(response);
         }
       }
+    }
+
+    function splitHelp() {
+      console.log("\nUser: " + message.author.username + "#" + message.author.discriminator + " asked: |" + message.content + "| in channel: " + message.channel.name);
+      let response =
+        "Active commands: \n.split `X` where `X` is the value to split among the 8 people (ex: .split 1000)\n.splitY `X` where Y is the number of people to split between(2-7) and `X` is the value to split among them (ex: .split4 1000)";
+      console.log("splitCommand replies:");
+      console.log(response);
+      message.reply(response);
     }
   }
 
