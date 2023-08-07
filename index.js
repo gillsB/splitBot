@@ -23,12 +23,15 @@ client.on("messageCreate", (message) => {
   var split7Com = ".split7";
   var splitHelpCom = ".split?";
   var hhCom = ".hh";
+  var splitShort = ".s";
+  var ratCom = ".rat";
+  var gerbilCom = ".gerbil";
 
   //functions
 
   //if category is a main channel category i.e. general do something otherwise do other commands by else
   if (chanCategory.toLowerCase() === "general" || chanCategory.toLowerCase() === "lost ark; server una") {
-    if (message.content.startsWith(splitCom) || message.content.startsWith(hhCom)) {
+    if (message.content.startsWith(splitCom)) {
       message.reply("These commands are not active in the main channels");
     }
   } else {
@@ -37,17 +40,31 @@ client.on("messageCreate", (message) => {
       message.reply("The correct syntax is:\n .split `X` \n where `X` is the value to split among the 8 people ");
     } else if (message.content.startsWith(splitCom + " ")) {
       splitCommand();
+    } else if (message.content.startsWith(splitShort + " ")) {
+      splitCommand();
     } else if (message.content.startsWith(split4Com)) {
+      splitExtra(4);
+    } else if (message.content.startsWith(splitShort + "4 ")) {
       splitExtra(4);
     } else if (message.content.startsWith(split2Com)) {
       splitExtra(2);
+    } else if (message.content.startsWith(splitShort + "2 ")) {
+      splitExtra(2);
     } else if (message.content.startsWith(split3Com)) {
+      splitExtra(3);
+    } else if (message.content.startsWith(splitShort + "3 ")) {
       splitExtra(3);
     } else if (message.content.startsWith(split5Com)) {
       splitExtra(5);
+    } else if (message.content.startsWith(splitShort + "5 ")) {
+      splitExtra(5);
     } else if (message.content.startsWith(split6Com)) {
       splitExtra(6);
+    } else if (message.content.startsWith(splitShort + "6 ")) {
+      splitExtra(6);
     } else if (message.content.startsWith(split7Com)) {
+      splitExtra(7);
+    } else if (message.content.startsWith(splitShort + "7 ")) {
       splitExtra(7);
     } else if (message.content.startsWith(".") && message.content.includes("?")) {
       splitHelp();
@@ -127,7 +144,7 @@ client.on("messageCreate", (message) => {
 
         if (even_split == -1 || !Number.isInteger(even_split)) {
           response = "The correct syntax is:\n .split" + amount + " `X` \n where `X` is the value to split among the " + amount + " people ";
-          console.log("splitCommand replies:");
+          console.log("splitExtra replies:");
           console.log(response);
           message.reply(response);
         } else {
@@ -164,7 +181,16 @@ client.on("messageCreate", (message) => {
   /// functions below this line work in all channels
 
   if (message.content.toString() === hhCom) {
+    console.log("\nUser: " + message.author.username + "#" + message.author.discriminator + " used: |" + message.content + "| in channel: " + message.channel.name);
     message.reply("https://youtu.be/_swfdQOBMjc");
+  }
+  if (message.content.toString() === ratCom) {
+    console.log("\nUser: " + message.author.username + "#" + message.author.discriminator + " used: |" + message.content + "| in channel: " + message.channel.name);
+    message.reply("https://cdn.discordapp.com/attachments/841386143895126046/1137940926103298058/image.png");
+  }
+  if (message.content.toString() === gerbilCom) {
+    console.log("\nUser: " + message.author.username + "#" + message.author.discriminator + " used: |" + message.content + "| in channel: " + message.channel.name);
+    message.reply("https://cdn.discordapp.com/attachments/841386143895126046/1137939945294680144/image.png");
   }
 });
 
