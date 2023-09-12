@@ -9,6 +9,23 @@ client.on("ready", () => {
   console.log("the bot is ready");
 });
 
+//global variables that do not reset upon new message
+var splitCom = ".split";
+var split2Com = ".split2";
+var split3Com = ".split3";
+var split4Com = ".split4";
+var split5Com = ".split5";
+var split6Com = ".split6";
+var split7Com = ".split7";
+var splitHelpCom = ".split?";
+var hhCom = ".hh";
+var splitShort = ".s";
+var ratCom = ".rat";
+var gerbilCom = ".gerbil";
+var fbiCom = ".fbi";
+var fbiRot = null;
+var hhRot = null;
+
 client.on("messageCreate", (message) => {
   //get channel category name for differentiating between main channels and sub channels by category
   var chanCategory = null;
@@ -17,29 +34,6 @@ client.on("messageCreate", (message) => {
   } catch (error) {
     chanCategory = null;
   }
-  //if (message.channel.parent.name != NULL) {
-  //  var chanCategory = message.channel.parent.name;
-  // } else {
-  //   var chanCategory = null;
-  //}
-  //vars of all possible commands
-  var splitCom = ".split";
-  var split2Com = ".split2";
-  var split3Com = ".split3";
-  var split4Com = ".split4";
-  var split5Com = ".split5";
-  var split6Com = ".split6";
-  var split7Com = ".split7";
-  var splitHelpCom = ".split?";
-  var hhCom = ".hh";
-  var splitShort = ".s";
-  var ratCom = ".rat";
-  var gerbilCom = ".gerbil";
-  var fbiCom = ".fbi";
-  var fbiRot = null;
-  var hhRot = null;
-
-  //functions
 
   //if category is a main channel category i.e. general do something otherwise do other commands by else
   if (chanCategory != null) {
@@ -206,16 +200,20 @@ client.on("messageCreate", (message) => {
       case 0:
         message.reply("https://youtu.be/_swfdQOBMjc");
         hhRot = 1;
+        break;
       case 1:
         message.reply("https://youtu.be/27zwQdTkpH8");
         hhRot = 0;
+        break;
       case null:
         if (Math.random() < 0.5) {
           message.reply("https://youtu.be/_swfdQOBMjc");
           hhRot = 1;
+          break;
         } else {
           message.reply("https://youtu.be/27zwQdTkpH8");
           hhRot = 0;
+          break;
         }
     }
   }
@@ -225,20 +223,25 @@ client.on("messageCreate", (message) => {
   }
   if (message.content.toString() === fbiCom) {
     console.log("\nUser: " + message.author.username + "#" + message.author.discriminator + " used: |" + message.content + "| in channel: " + message.channel.name);
+    console.log("before val = " + fbiRot);
     switch (fbiRot) {
       case 0:
         message.reply("https://media.discordapp.net/attachments/841386143895126046/1144091660465213481/image.png");
         fbiRot = 1;
+        break;
       case 1:
         message.reply("https://cdn.discordapp.com/attachments/841386143895126046/1144092400638230589/image.png");
         fbiRot = 0;
+        break;
       case null:
         if (Math.random() < 0.5) {
           message.reply("https://cdn.discordapp.com/attachments/841386143895126046/1144092400638230589/image.png");
-          fbiRot = 1;
+          fbiRot = 0;
+          break;
         } else {
           message.reply("https://media.discordapp.net/attachments/841386143895126046/1144091660465213481/image.png");
-          fbiRot = 0;
+          fbiRot = 1;
+          break;
         }
     }
     console.log("fbiRot val = " + fbiRot);
